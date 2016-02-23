@@ -68,6 +68,14 @@ function onError(error) {
   }
 }
 
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
+
 io.on("connection", function (socket) {
   setInterval(function () {
     unirest.get('http://galvanize-warroom-status.herokuapp.com/')
