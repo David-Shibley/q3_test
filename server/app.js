@@ -28,11 +28,17 @@ io.on("connection", function (socket) {
   setInterval(function () {
     unirest.get('http://galvanize-warroom-status.herokuapp.com/')
       .end(function (data) {
-        db.get('servers').find().then(function (servers) {
-          var average = reduceFindAverage(servers);
-          socket.emit("bid", {
-            body: data.body,
-            average: average,
+        return db.MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
+          var servers = db.collection('servers');
+          servers.find().next(function (err, serverData) {
+            console.log(serverData);
+            var outGoingData = [];
+            data.push(serverData)
+            var average = reduceFindAverage(outGoingData);
+            socket.emit("status", {
+              body: data.body,
+              average: average,
+            })
           })
         })
       })

@@ -1,6 +1,6 @@
 angular.module('warRoom')
   .factory('ServerConnectionService', ServerConnectionService)
-  .factory('statusService', statusService);
+  .factory('StatusService', StatusService);
 
 // inject dependencies for server connection service
 ServerConnectionService.$inject = ['$http']
@@ -21,9 +21,9 @@ function ServerConnectionService($http) {
 }
 
 // inject dependencies for status service
-statusService.$inject = ['$stateParams']
+StatusService.$inject = ['$stateParams']
 
-function statusService ($stateParams) {
+function StatusService ($stateParams) {
   var socket = io()
   var callbacks = []
   console.log($stateParams.id);

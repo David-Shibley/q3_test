@@ -2,7 +2,7 @@
 <div class="page-header">
   <h1>The War Room</h1>
 </div>
-<div ng-repeat="server in servers">
+<div ng-repeat="server in servers" ui-sref="detail({id: home.id})">
 <h2>
   Name:
   {{server.name}}
