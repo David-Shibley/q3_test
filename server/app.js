@@ -10,6 +10,10 @@ var app = Express()
 var server = http.Server(app)
 var io = Socket(server)
 
+
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
 function reduceFindAverage(servers) {
   var list = servers.reduce(function (serverIndex, server, i, arr) {
     serverIndex[server.id] = serverIndex[server.id] || {id: server.id, responseTime: [], average: 0 }
@@ -64,6 +68,8 @@ app.get('/api/homes', function (request, response) {
     })
 })
 
-server.listen(3000, function () {
-  console.log("listening on 3000")
-})
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+module.exports = app;
