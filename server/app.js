@@ -118,6 +118,5 @@ app.get('/api/homes', function (request, response) {
 
 server.listen(port);
 server.on('error', onError);
-server.on('listening', onListening);
 
 module.exports = app;
