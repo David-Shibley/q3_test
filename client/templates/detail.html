@@ -3,9 +3,9 @@
   Name:
   {{server.name}}
 </h2>
-<p>
+<p ng-class="{good:(server.responseTime<=(1/20)), critical:(server.responseTime>(1/2)), uhoh:((1/20)<(server.responseTime)&&(server.responseTime)<=(1/2))}">
   Time:
-  {{server.responseTime}}
+  {{(server.responseTime*100)}} (ms)
 </p>
 <p>
   ID:
@@ -26,4 +26,8 @@
 <p>
   Temp:
   {{server.temp}}
+</p>
+<p>
+  Average:
+  {{average}}
 </p>

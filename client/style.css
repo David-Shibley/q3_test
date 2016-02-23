@@ -1,0 +1,9 @@
+p.good {
+  background-color: green;
+}
+p.uhoh {
+  background-color: yellow;
+}
+p.critical {
+  background-color: red;
+}
