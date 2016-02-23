@@ -8,10 +8,11 @@
     "start": "node server/app.js"
   },
   "dependencies": {
+    "dotenv": "^2.0.0",
     "express": "^4.13.4",
-    "monk": "^1.0.1",
     "mongodb": "^2.1.7",
     "mongoose": "^4.4.4",
+    "monk": "^1.0.1",
     "socket.io": "^1.4.5",
     "unirest": "^0.4.2"
   }
