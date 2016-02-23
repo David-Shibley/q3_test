@@ -28,6 +28,22 @@ function reduceFindAverage(servers) {
   return list
 }
 
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
 io.on("connection", function (socket) {
   setInterval(function () {
     unirest.get('http://galvanize-warroom-status.herokuapp.com/')
