@@ -96,7 +96,7 @@ io.on("connection", function (socket) {
       })
   }, 3000)
 })
-app.use(express.static(__dirname + '../client'));
+app.use(Express.static(__dirname + '../client'));
 
 // app.use(Express.static("../client"))
 
