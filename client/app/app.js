@@ -12,5 +12,10 @@ angular.module('warRoom', ['ui.router'])
       templateUrl: 'templates/detail.html',
       controller: 'DetailController',
       url: '/home/:id'
+    }).state('settings', {
+      //set controller and template for settings route
+      templateUrl: 'templates/settings.html',
+      controller: 'SettingsController',
+      url: '/settings'
     })
   });

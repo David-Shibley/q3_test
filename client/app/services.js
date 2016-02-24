@@ -28,11 +28,12 @@ function StatusService ($stateParams) {
   var callbacks = []
   console.log($stateParams.id);
   //initialize socket connection
-  socket.on('bid', function (data) {
+  socket.on('status', function (data) {
     //iterate over every callback in callbacks array
     callbacks.forEach(function (callback) {
       var status, average;
       data.body.forEach(function (server, index) {
+        console.log(server);
         //check to make sure the server id matches the id in the url
         if (server.id == $stateParams.id) {
           status = server.responseTime;

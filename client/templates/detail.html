@@ -3,7 +3,7 @@
   Name:
   {{server.name}}
 </h2>
-<p ng-class="{good:(server.responseTime<=(1/20)), critical:(server.responseTime>(1/2)), uhoh:((1/20)<(server.responseTime)&&(server.responseTime)<=(1/2))}">
+<p ng-class="{good:(server.responseTime<=settings.good), critical:(server.responseTime>(1/2)), uhoh:((1/20)<(server.responseTime)&&(server.responseTime)<=(1/2))}">
   Time:
   {{(server.responseTime*100)}} (ms)
 </p>

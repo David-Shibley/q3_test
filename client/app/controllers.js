@@ -1,6 +1,7 @@
 angular.module('warRoom')
   .controller('HomeController', HomeController)
-  .controller('DetailController', DetailController);
+  .controller('DetailController', DetailController)
+  .controller('SettingsController', SettingsController);
 
 //inject dependencies for home controller
 HomeController.$inject = ['$scope', 'ServerConnectionService'];
@@ -31,4 +32,27 @@ function DetailController($scope, ServerConnectionService, $stateParams, StatusS
     console.log($scope.statuses)
     $scope.$apply()
   })
+}
+
+//inject dependencies for detail controller
+SettingsController.$inject = ['$scope', '$http']
+//controller for each servers detail page
+function SettingsController($scope, $http) {
+  // $scope.settings = {
+  //   critical: 0.05,
+  //   warning: 0.5
+  // }
+  $http.get('/api/settings').then(function(data){
+    if (data) {
+      console.log("data ", data.data);
+      $scope.settings = {};
+      $scope.settings.id = data.data._id;
+      $scope.settings.critical = data.data.critical;
+      $scope.settings.warning = data.data.warning;
+    }
+  });
+  $scope.submit = function(){
+    console.log('settings ', $scope.settings);
+    $http.post('/api/settings', $scope.settings)
+  }
 }
